@@ -1,11 +1,26 @@
 import React from 'react';
 
-const Login = () =>{
+export function Login () {
     return(
-        <div>
-            <h1>Longin</h1>
+        <div >
+            <div>
+                <h1 >Login</h1>
+                <div ></div>
+            </div>
+            <div>
+                <div >
+                    <img src="" alt="" />
+                    <input type="text" placeholder='Username' />
+                </div>
+            </div>
+            <div >
+                <div >
+                    <img src="" alt="" />
+                    <input type="password" placeholder='Password' />
+                </div>
+            </div>
+            
+
         </div>
     );
 }
-
-export default Login;

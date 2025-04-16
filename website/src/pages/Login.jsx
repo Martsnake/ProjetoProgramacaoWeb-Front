@@ -7,26 +7,26 @@ export default function Login() {
     const [error, setError] = useState(null);
     
     return(
-            <div className={styles.login-main}>
-                <div className={styles.login-container}>
-                    <h1 className={styles.login-title}>Login</h1>
+            <div className={styles.main}>
+                <div className={styles.container}>
+                    <h1 className={styles.title}>Login</h1>
                     <div ></div>
                 </div>
                 <div>
-                    <div className={styles.input-group}>
+                    <div className={styles.input_group}>
                         <img src="" alt="" />
-                        <input type="text" placeholder='Inserir email ou numero de aluno' className={styles.input-field}/>
+                        <input type="text" placeholder='Inserir email ou numero de aluno' className={styles.input_field}/>
                     </div>
                 </div>
                 <div >
-                    <div className={styles.input-group}>
+                    <div className={styles.input_group}>
                         <img src="" alt="" />
-                        <input type="password" placeholder='Inserir password' className={styles.input-field}/>
+                        <input type="password" placeholder='Inserir password' className={styles.input_field}/>
                     </div>
                 </div>
                 <div>
-                    <div className={styles.button-container}>
-                        <button className={styles.login-button}>Login</button>
+                    <div className={styles.button_container}>
+                        <button className={styles.login_button}>Login</button>
                     </div>
                 </div>
             </div>

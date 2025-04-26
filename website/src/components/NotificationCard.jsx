@@ -1,12 +1,11 @@
-import react from "react";
+import React from "react";
+import styles from './NotificationCard.module.css';
 
-import styles from './LandingButtons.module.css';
-
-export default function LandingButtons({title, subtitle}) {
+export default function NotificationCard({ title, subtitle}) {
     return(
         <div className={styles.container}>
             <div className={styles.textContainer}>
-                <p className={styles.title}>{title}</p>
+                <h2>{title}</h2>
                 <p className={styles.subtitle}>{subtitle}</p>
             </div>
             <div className={styles.arrow}>&#x2794;</div>

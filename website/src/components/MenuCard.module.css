@@ -1,0 +1,62 @@
+.card {
+    background-color: #EFF4FD; /* Light blue background */
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Montserrat', sans-serif;
+    max-width: 400px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    margin: 0;
+}
+
+.mealType {
+    font-size: 14px;
+    font-weight: bold;
+    color: #0D28C2; /* Blue color */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.arrow {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #696E77; /* Gray color */
+    text-transform: uppercase;
+}
+
+.value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+
+}

@@ -11,10 +11,10 @@ export default function Header() {
         <header className={`${styles.header} ${isLoggedIn ? styles.loggedIn : ""}`}>
             <img src={logo} alt="Iscte" className={styles.logo}/>
             {/* Uma forma BASICA de modar o header quando o utilizador faz login(não vai ficar assim) */}
-            {/* <div className={styles.logo}>Logo</div>
+            <div className={styles.logo}>Logo</div>
             <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
                 {isLoggedIn ? "Logout" : "Login"}
-            </button> */}
+            </button>
         </header>
     );
 }

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 import styles from './Login.module.css';
 
 const Login = () => {
@@ -8,6 +10,8 @@ const Login = () => {
 
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
+
+    const navigate = useNavigate();
         
     const handleLogin = async (e) => {
       
@@ -28,6 +32,7 @@ const Login = () => {
       
         if (response.ok) {
             setMessage(data.message);
+            navigate('/home'); // Se estiver tudo ok, vai para a home page
             }
       
           } catch (err) {
@@ -61,20 +66,21 @@ const Login = () => {
                         
                         <div className={styles.input}>
                             <input type="password" placeholder='Inserir password' 
-                                   className={styles.input_field}value={Password}
+                                   className={styles.input_field}
+                                   value={Password}
                                    onChange={(e) => setPassword(e.target.value)}
                                    required/>
                         </div>
                     </div>
                     <div>
-                        <div className={styles.button_container}>
+                        <div className={styles.button_container}> 
                             <button type="submit"className={styles.login_button}>Login</button>
                         </div>
                     </div>
 
                     </form>
                     <div>
-                        <p className={styles.forgot_password}>Esqueci-me da password</p>
+                        <Link to="/password"className={styles.forgot_password}>Esqueci-me da password</Link>
                     </div>
                 </div>
             </div>

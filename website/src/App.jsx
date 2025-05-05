@@ -14,10 +14,10 @@ export default function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<PasswordRecoverryPage />} />
-        <Route path="/password" element={< Login/>} />
-        <Route path="/landing" element={<HomePage/>}/>
-        <Route path="/home" element={<LandingPage/>}/>
+        <Route path="/" element={<LandingPage/>}/>
+        <Route path="/login" element={< Login/>} />
+        <Route path="/home" element={<HomePage/>}/>
+        <Route path="/password" element={<PasswordRecoverryPage />} />
       </Routes>
     </Router>
   )

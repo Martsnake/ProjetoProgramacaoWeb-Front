@@ -1,0 +1,44 @@
+/* Group 3 Copy */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    width: 335px;
+    height: 75px;
+    padding: 10px 20px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #0d28c2;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+}
+  
+.arrow {
+    font-size: 20px;
+    color: #0d28c2;
+}
+

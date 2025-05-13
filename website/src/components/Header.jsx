@@ -10,10 +10,10 @@ export default function Header() {
     
     return(
         <header className={styles.header}>
-            <img src={logo} alt="Iscte" className={styles.logo}/>
+            <img src={logo} alt="Iscte" className={styles.logo} oncontextmenu="return false;"/>
             
             <div className={styles.logo}>
-                <img src={user} alt="User"/>
+                <img src={user} alt="User" className={styles.userIcon}/>
             </div>
            
         </header>

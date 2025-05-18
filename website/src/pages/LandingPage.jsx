@@ -28,8 +28,8 @@ export default function LandingPage() {
                 <div className={styles.buttonContainer}>
                     <LandingButtons
                     title="Sou um novo aluno"
-                    subtitle="Como chegar ao ISCTE (n funciona)"
-                    to= "/"
+                    subtitle="Como chegar ao ISCTE"
+                    to= "/register"
                     />
 
                     <LandingButtons

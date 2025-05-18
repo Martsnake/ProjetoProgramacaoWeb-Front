@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import styles from './Login.module.css';
+import styles from './Register.module.css';
 
-const Login = () => {
+const Register = () => {
     
     const [Email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
@@ -13,14 +13,14 @@ const Login = () => {
 
     const navigate = useNavigate();
         
-    const handleLogin = async (e) => {
+    const handleRegister = async (e) => {
       
         e.preventDefault();
         setError(null);
         setMessage(null);
           
         try {
-            const response = await fetch('http://localhost:8000/login', {
+            const response = await fetch('http://localhost:8000/register', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ const Login = () => {
       
         if (response.ok) {
             setMessage(data.message);
-            navigate('/home');
+            navigate('/login');
             }
       
           } catch (err) {
@@ -44,9 +44,9 @@ const Login = () => {
     return(
             <div className={styles.main}>
                 <div className={styles.container}>
-                    <form onSubmit={handleLogin}>
+                    <form onSubmit={handleRegister}>
                     <div>
-                        <h1 className={styles.title}>Login</h1>
+                        <h1 className={styles.title}>Register</h1>
                         {message && <div >{message}</div>}
                         {error && <div >{error}</div>}
                     </div>
@@ -74,16 +74,13 @@ const Login = () => {
                     </div>
                     <div>
                         <div className={styles.button_container}> 
-                            <button type="submit"className={styles.login_button}>Login</button>
+                            <button type="submit"className={styles.register_button}>Register</button>
                         </div>
                     </div>
 
                     </form>
-                    <div>
-                        <Link to="/password"className={styles.forgot_password}>Esqueci-me da password</Link>
-                    </div>
                 </div>
             </div>
     );
 };
-export default Login;
+export default Register;

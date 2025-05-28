@@ -1,0 +1,52 @@
+:global(body),
+:global(html),
+:global(#root) {
+  height: 100%;
+  margin: 0;
+}
+
+
+.page {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #324EEC; 
+}
+
+.eventgrid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  
+  grid-template-columns: 1fr;
+}
+
+
+.eventgrid > div {
+  border: 1px solid red;
+  height: 100px;
+  background-color: #e0e0e0;
+}
+
+
+@media (min-width: 600px) {
+  .eventgrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .eventgrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import EventPage from './pages/EventPage.jsx';
 import  Login  from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import PasswordRecoverryPage  from './pages/PasswordRecoverryPage.jsx';
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/register" element={< Register/>} />
         <Route path="/home" element={<HomePage/>}/>
         <Route path="/password" element={<PasswordRecoverryPage />} />
+        <Route path='/event' element={<EventPage/>}/>
       </Routes>
     </Router>
   )

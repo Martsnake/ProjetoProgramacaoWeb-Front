@@ -26,7 +26,7 @@ export default function MainPage() {
                 <section className={styles.section}>
                     <div className={styles.titleAndButton}>
                         <h2>NOTIFICAÇÕES</h2>
-                        <SeeAllButton to ="/"/>
+                        <SeeAllButton to ="/event"/>
                     </div>
                     <NotificationCard
                         title="Bibloteca"

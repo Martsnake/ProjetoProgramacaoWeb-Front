@@ -5,9 +5,8 @@
   margin: 0;
 }
 
-
 .page {
-  min-height: 100vh; 
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 2rem;
@@ -18,35 +17,20 @@
   font-size: 2rem;
   margin-bottom: 1.5rem;
   text-align: center;
-  color: #324EEC; 
+  color: #0D28C2;
 }
 
 .eventgrid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   padding: 1rem;
   background-color: #fff;
-  
-  grid-template-columns: 1fr;
+  align-items: stretch;
 }
 
-
-.eventgrid > div {
-  border: 1px solid red;
-  height: 100px;
-  background-color: #e0e0e0;
-}
-
-
-@media (min-width: 600px) {
-  .eventgrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-
-@media (min-width: 1024px) {
-  .eventgrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }

@@ -16,12 +16,12 @@ export default function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<LandingPage/>}/>
+        <Route path="/" element={<EventPage/>}/>
         <Route path="/login" element={< Login/>} />
         <Route path="/register" element={< Register/>} />
         <Route path="/home" element={<HomePage/>}/>
         <Route path="/password" element={<PasswordRecoverryPage />} />
-        <Route path='/event' element={<EventPage/>}/>
+        <Route path='/event' element={<LandingPage/>}/>
       </Routes>
     </Router>
   )

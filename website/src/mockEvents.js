@@ -9,6 +9,7 @@ export const mockEvents = [
       "Venha conhecer os novos campi da faculdade, os projetos dos colegas e muito mais!",
     tags: ["Social", "Integração", "Networking"],
     imagem: iscteImg,
+    organizador: "Iscte",
   },
   {
     id: "2",
@@ -18,6 +19,7 @@ export const mockEvents = [
       "Desafia-te a resolver problemas reais em 24 horas com equipas multidisciplinares.",
     tags: ["Tecnologia", "Programação"],
     imagem: iscteImg,
+    organizador: "Iscte",
   },
   {
     id: "3",
@@ -27,5 +29,6 @@ export const mockEvents = [
       "Profissionais do mercado partilham as suas experiências e dão dicas para o teu futuro.",
     tags: ["Carreira", "Palestra"],
     imagem: iscteImg,
+    organizador: "Iscte",
   },
 ];

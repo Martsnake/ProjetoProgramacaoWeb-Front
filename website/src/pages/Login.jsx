@@ -83,9 +83,9 @@ const Login = () => {
                     </div>
 
                     </form>
-                    <div>
-                        <Link to="/password"className={styles.forgot_password}>Esqueci-me da password</Link>
-                    </div>
+                    
+                    <Link to="/password"className={styles.forgot_password}>Esqueci-me da password</Link>
+                    
                 </div>
             </div>
     );

@@ -80,10 +80,13 @@
   padding: 0;   
 }
 
+
 .forgot_password {
   text-align: center;
   margin-top: 1rem;
+  padding-bottom: 1rem;
   font-size: 14px;
   color: #0D28C2;
   cursor: pointer;
 }
+

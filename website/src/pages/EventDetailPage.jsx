@@ -12,6 +12,7 @@ export default function EventDetailPage() {
   const event = location.state;
 
   const tagRefs = useRef({});
+  
 
 
 
@@ -25,10 +26,7 @@ export default function EventDetailPage() {
 
   if (!event) return <p>Loading...</p>;
 
-  const scrollToTag = (tag) => {
-    const el = tagRefs.current[tag];
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+
 
   return (
     <div className={styles.container}>
@@ -67,18 +65,11 @@ export default function EventDetailPage() {
           </div>
           <hr />
           <div>
-            <input type="text" />
+            <input type="text" className={styles.input} placeholder=""/>
             <CommentCard
               username="João"
               date="há 2 horas"
               commentText="Este evento parece incrível!"
-              replies={[
-                {
-                  username: "Maria",
-                  date: "há 1 hora",
-                  commentText: "Concordo totalmente contigo!",
-                },
-              ]}
             />
 
           </div>

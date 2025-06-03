@@ -6,9 +6,14 @@ export default function CommentCard({
   username,
   date,
   commentText,
-  replies = [],
+  avaliacao,
+
 }) {
+
   const [showReplyBox, setShowReplyBox] = useState(false);
+  const [replyText, setReplyText] = useState("");
+
+
 
   return (
     <div className={styles.commentCard}>
@@ -18,26 +23,10 @@ export default function CommentCard({
           <strong className={styles.username}>{username}</strong>
           <span className={styles.date}>{date}</span>
         </div>
+        
       </div>
 
       <div className={styles.commentText}>{commentText}</div>
-
-      <div className={styles.actions}>
-        <button onClick={() => setShowReplyBox(!showReplyBox)}>Responder</button>
-      </div>
-
-      {showReplyBox && (
-        <div className={styles.replyBox}>
-          <textarea placeholder="Escreve a tua resposta..." />
-          <button>Enviar</button>
-        </div>
-      )}
-
-      <div className={styles.replies}>
-        {replies.map((reply, i) => (
-          <CommentCard key={i} {...reply} />
-        ))}
-      </div>
     </div>
   );
 }

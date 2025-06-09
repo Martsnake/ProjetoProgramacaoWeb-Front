@@ -14,10 +14,7 @@ export default function EventDetailPage() {
   const tagRefs = useRef({});
   
 
-
-
-
-
+  
   useEffect(() => {
     if (!event) {
       navigate("/home");
@@ -71,7 +68,6 @@ export default function EventDetailPage() {
               date="há 2 horas"
               commentText="Este evento parece incrível!"
             />
-
           </div>
           
         </div>

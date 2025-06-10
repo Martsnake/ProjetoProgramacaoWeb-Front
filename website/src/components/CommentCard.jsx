@@ -22,6 +22,7 @@ export default function CommentCard({
         <div>
           <strong className={styles.username}>{username}</strong>
           <span className={styles.date}>{date}</span>
+          
         </div>
         
       </div>

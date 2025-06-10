@@ -1,5 +1,5 @@
 import { useLocation, useNavigate, useParams, } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import CommentCard from "../components/CommentCard.jsx";
 
 import styles from "./EventDetailPage.module.css";
@@ -14,11 +14,13 @@ export default function EventDetailPage() {
   const tagRefs = useRef({});
   
 
+
   
   useEffect(() => {
     if (!event) {
       navigate("/home");
     }
+    
   }, [event, navigate]);
 
   if (!event) return <p>Loading...</p>;
@@ -63,6 +65,7 @@ export default function EventDetailPage() {
           <hr />
           <div>
             <input type="text" className={styles.input} placeholder=""/>
+            {/* mete aqui o star rating  */}
             <CommentCard
               username="João"
               date="há 2 horas"

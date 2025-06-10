@@ -7,7 +7,14 @@ const Login = () => {
     
     const [Email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
-    const [token, setToken] = useState('');
+    
+    const setToken = (token) => {
+        console.log(token);
+        
+        localStorage.setItem("token", token)
+        console.log(localStorage.getItem("token"));
+    }; 
+    
 
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
@@ -30,7 +37,10 @@ const Login = () => {
             });
       
         const data = await response.json();
-        if (data.autentication){
+        console.log(data);
+        
+        if (data.authenticated == "true"){
+
             setToken(data.token)
         }
       

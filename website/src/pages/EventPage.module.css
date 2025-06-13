@@ -1,0 +1,147 @@
+/* Base reset */
+:global(body),
+:global(html),
+:global(#root) {
+  height: 100%;
+  margin: 0;
+}
+
+/* Página de eventos */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #fff;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #0D28C2;
+}
+
+/* Grelha de eventos */
+.eventgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  align-items: stretch;
+}
+
+
+
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.cardLink:nth-child(1) { animation-delay: 0.1s; }
+.cardLink:nth-child(2) { animation-delay: 0.2s; }
+.cardLink:nth-child(3) { animation-delay: 0.3s; }
+.cardLink:nth-child(4) { animation-delay: 0.4s; }
+.cardLink:nth-child(5) { animation-delay: 0.5s; }
+.cardLink:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+.textCenter {
+  text-align: center;
+}
+
+.spinnerBorder {
+  width: 3rem;
+  height: 3rem;
+  border: 0.4rem solid #ccc;
+  border-top: 0.4rem solid #0D28C2;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+/* Paginação */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.pageButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #0D28C2;
+  background: transparent;
+  color: #0D28C2;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pageButton:hover:not(:disabled) {
+  background: #0D28C2;
+  color: white;
+}
+
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  font-size: 1rem;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  .eventgrid {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+  
+  .cardLink:nth-child(n+7) {
+    display: none;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .pageButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .spinnerBorder {
+    width: 2rem;
+    height: 2rem;
+    border-width: 0.3rem;
+  }
+}

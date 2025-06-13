@@ -7,6 +7,11 @@
    background-color: #0d28c2;
    color: white;
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 1000;
 }
 
 .logo {
@@ -27,14 +32,9 @@
    pointer-events: none;
 }
 
-.header.loggedIn {
-   background-color: #1a73e8; 
-   color: #fff; 
- }
 
 @media (max-width: 768px) {
    .header {
-      justify-content: center;
       height: 60px;
       padding: 10px;
    }

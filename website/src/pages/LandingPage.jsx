@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import LandingButtons from "../components/Landingbuttons";
 
 import styles from './LandingPage.module.css';
 
 export default function LandingPage() {
+
+    const navigate = useNavigate();
+
+    
     useEffect(() => {
         document.body.classList.add(styles.noScroll);
 
@@ -13,23 +18,32 @@ export default function LandingPage() {
         }
     }, []);
 
+     useEffect(() => {
+            const token = localStorage.getItem("token");
+            
+            
+            if (token) {
+                navigate('/home');
+            }
+        }, [navigate]);
+
     return(   
 
         <div className={styles.background}>
             <div className={styles.mainContainer}>
-                {/*Hedear???*/}
+            
                 <div className={styles.messageContainer}>
                     <h1 className={styles.title}>Bem-vindo ao ISCTE</h1>
                     <p className={styles.subtitle}>Um espaço para crescer, inovar e conviver. <br />
                         Agora acessível sempre que quiseres.</p>
                 </div>
 
-                {/* Botões */}
+                
                 <div className={styles.buttonContainer}>
                     <LandingButtons
                     title="Sou um novo aluno"
-                    subtitle="Como chegar ao ISCTE (n funciona)"
-                    to= "/"
+                    subtitle="Como chegar ao ISCTE"
+                    to= "/register"
                     />
 
                     <LandingButtons

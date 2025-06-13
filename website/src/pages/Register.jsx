@@ -1,77 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import styles from './Login.module.css';
+import styles from './Register.module.css';
 
-const Login = () => {
+const Register = () => {
     
     const [Email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
-    
-    const setToken = (token) => {
-        
-        localStorage.setItem("token", token)
-    }; 
-    
 
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
 
     const navigate = useNavigate();
-    
-    useEffect(() => {
-        const token = localStorage.getItem("token");
         
-        
-        if (token) {
-            navigate('/home');
-        }
-    }, [navigate]);
-
-
-        
-    const handleLogin = async (e) => {
-        
+    const handleRegister = async (e) => {
+      
         e.preventDefault();
         setError(null);
         setMessage(null);
-        
+          
         try {
-            const response = await fetch('http://localhost:8000/login', {
+            const response = await fetch('http://localhost:8000/signup', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ Email, Password })
             });
-            
-            
-            const data = await response.json();
-            
-            
-            if (data.authenticated == "true"){
-                setToken(data.token)
-                
+      
+        const data = await response.json();
+      
+        if (response.ok) {
+            setMessage(data.message);
+            navigate('/login');
             }
-        
-            if (response.ok) {
-                setMessage(data.message);
-                navigate('/home');
-                }
-        
-        } catch (err) {
+      
+          } catch (err) {
               console.error('Erro:', err);
               setError(err.message);
-            } 
-        
+            }   
         
     }
     return(
             <div className={styles.main}>
                 <div className={styles.container}>
-                    <form onSubmit={handleLogin}>
+                    <form onSubmit={handleRegister}>
                     <div>
-                        <h1 className={styles.title}>Login</h1>
+                        <h1 className={styles.title}>Register</h1>
                         {message && <div >{message}</div>}
                         {error && <div >{error}</div>}
                     </div>
@@ -99,16 +74,13 @@ const Login = () => {
                     </div>
                     <div>
                         <div className={styles.button_container}> 
-                            <button type="submit"className={styles.login_button}>Login</button>
+                            <button type="submit"className={styles.register_button}>Register</button>
                         </div>
                     </div>
 
                     </form>
-                    
-                    <Link to="/password" className={styles.forgot_password}>Esqueci-me da password</Link>
-                    <Link to="/register" className={styles.forgot_password}>Sign Up</Link>
                 </div>
             </div>
     );
 };
-export default Login;
+export default Register;

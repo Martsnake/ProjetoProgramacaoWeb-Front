@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ImgIscte from "../assets/iscteImag.svg";
+
+import EventCard from "../components/EventCard";
+import SearchBar from "../components/SearchBar";
+import GoBackButton from "../components/GoBackButton";
 
 
 import styles from "./EventPage.module.css";
@@ -8,21 +11,22 @@ import styles from "./EventPage.module.css";
 const EventPage = () => {
   const [events, setEvents] = useState([]);
   const [page, setPage] = useState(1);
-  const [limit] = useState(5); 
-  const [totalPages, setTotalPages] = useState("");
+  const limit = 6; 
+  const [totalPages, setTotalPages] = useState();
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   const [error, setError] = useState(null);
   
 
-  const handleEvent = async (page) => {
-
+  const handleEvent = async () => {
+    
     setLoading(true);
     setError(null);
     try{
-      console.log(localStorage.getItem("token"));
       
-      const response = await fetch(`http://localhost:8000/events?page=${page}&limit=${limit}`, {
+      
+      const response = await fetch(`http://localhost:8000/events`, {
         method: 'GET',
         headers: {
           "Authorization" : localStorage.getItem("token"),
@@ -33,12 +37,9 @@ const EventPage = () => {
         throw new Error("Erro ao buscar eventos");
       }
       const data = await response.json();
-      console.log(data);  
-      
-      setEvents(data);
-      console.log(setTotalPages(data.totalPages));
-      
-      setTotalPages(data.totalPages);
+      setEvents(Array.isArray(data) ? data : []);
+      setTotalPages(Math.ceil((Array.isArray(data) ? data.length : 0) / limit))
+    
     }catch (err){
       console.error("Erro:", err);
       setError(err.message);
@@ -46,31 +47,41 @@ const EventPage = () => {
       setLoading(false);
     }
   };
+  
+  useEffect(() => {
+    
+      handleEvent();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
+  const filtered = events.filter(ev =>
+    ev.Name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const sorted = [...filtered].sort((a, b) => new Date(a.Date) - new Date(b.Date));
+  const totalPagesCalc = Math.max(1, Math.ceil(sorted.length / limit));
+  const paginated = sorted.slice((page - 1) * limit, page * limit);
 
   useEffect(() => {
-    const fetchData = async () => {
-      await handleEvent();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-    fetchData();
-  }, [page]);
+    setTotalPages(totalPagesCalc);
+    if (page > totalPagesCalc) setPage(1);
+    
+  }, [sorted.length]);
 
+  
 
   const handlePageChange = (newPage) => {
     if (newPage < 1 || newPage > totalPages) return;
     setPage(newPage);
   };
   
-  const sorted = [...events].sort((a, b) => new Date(a.Date) - new Date(b.Date));
-  
-  const formattedDate = new Date(sorted.Date).toLocaleDateString();
-  
-  
 
   return (
     <div className={styles.page}>
+      <GoBackButton label="Voltar" />
       <h1 className={styles.title}>Eventos</h1>
+      <SearchBar value={search} onChange={setSearch} placeholder="Search..."/>
+
       {error  && <div className = {styles.textCenter} >{error}</div>}
 
       {loading ? (
@@ -80,43 +91,17 @@ const EventPage = () => {
           </div>
         ) : (
       <div className={styles.eventgrid}>
-        {sorted.map(ev => (
+        {paginated.map(ev => (
             <Link
-              key={ev.Name}
-              to={`/event/${ev.Name}`}
+              key={ev.EventId}
+              to={`/event/${ev.EventId}`}
               state={{ ...ev }}
               className={styles.cardLink}
             >
-              <div className={styles.card}>
-              
-                    <div className={styles.imageContainer}>
-                      <img
-                          src={ev.Image || ImgIscte} 
-                          className={styles.image}
-                        />
-                    </div>
-              
-                    <div className={styles.content}>
-                      <div className={styles.header}>
-                        <h2 className={styles.nome}>{ev.Name}</h2>
-                        <span className={styles.data}>{formattedDate}</span>
-                      </div>
-              
-                      <p className={styles.descricao}>{ev.Description}</p>
-              
-                      <div className={styles.footer}>
-                        <div className={styles.tags}>
-                          {ev.Tags.map((tag, idx) => (
-                            <span key={idx} className={styles.tag}>
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                        <p className={styles.organizerName}>Organizado por: {ev.Organizer}</p>
-                      </div>
-              
-                    </div>
-                  </div>
+              <EventCard
+                key={ev.EventId}
+                {...ev}
+              />
             </Link>
         ))}
 
@@ -131,8 +116,8 @@ const EventPage = () => {
           </button>
           <span className={styles.pageInfo}>Page {page} of {totalPages}</span>
           <button className={styles.pageButton}
-          onClick={() => handlePageChange(page + 1)}
-          disabled={page === totalPages || loading}>
+            onClick={() => handlePageChange(page + 1)}
+            disabled={page === totalPages || loading}>
             Next &raquo;
           </button>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './Login.module.css';
@@ -9,10 +9,8 @@ const Login = () => {
     const [Password, setPassword] = useState('');
     
     const setToken = (token) => {
-        console.log(token);
         
         localStorage.setItem("token", token)
-        console.log(localStorage.getItem("token"));
     }; 
     
 
@@ -20,13 +18,24 @@ const Login = () => {
     const [message, setMessage] = useState(null);
 
     const navigate = useNavigate();
+    
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        
+        
+        if (token) {
+            navigate('/home');
+        }
+    }, [navigate]);
+
+
         
     const handleLogin = async (e) => {
         
         e.preventDefault();
         setError(null);
         setMessage(null);
-          
+        
         try {
             const response = await fetch('http://localhost:8000/login', {
                 method: 'POST',
@@ -35,24 +44,26 @@ const Login = () => {
                 },
                 body: JSON.stringify({ Email, Password })
             });
-      
-        const data = await response.json();
-        console.log(data);
-        
-        if (data.authenticated == "true"){
-
-            setToken(data.token)
-        }
-      
-        if (response.ok) {
-            setMessage(data.message);
-            navigate('/home');
+            
+            
+            const data = await response.json();
+            
+            
+            if (data.authenticated == "true"){
+                setToken(data.token)
+                
             }
-      
-          } catch (err) {
+        
+            if (response.ok) {
+                setMessage(data.message);
+                navigate('/home');
+                }
+        
+        } catch (err) {
               console.error('Erro:', err);
               setError(err.message);
-            }   
+            } 
+        
         
     }
     return(
@@ -94,8 +105,8 @@ const Login = () => {
 
                     </form>
                     
-                    <Link to="/password"className={styles.forgot_password}>Esqueci-me da password</Link>
-                    
+                    <Link to="/password" className={styles.forgot_password}>Esqueci-me da password</Link>
+                    <Link to="/register" className={styles.forgot_password}>Sign Up</Link>
                 </div>
             </div>
     );

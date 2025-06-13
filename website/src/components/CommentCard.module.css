@@ -39,6 +39,70 @@
   color: #a1b2bc;
 }
 
+.headerMain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
 
+.stars {
+  display: flex;
+  align-items: center;
+  color: #FFD700;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+
+.ratingValue {
+  color: #222;
+  font-weight: bold;
+  margin-right: 0.2em;
+}
+
+.star {
+  font-size: 1.2em;
+}
+
+.reportWrapper {
+  position: relative; 
+  display: flex;
+  align-items: center;
+}
+
+.reportButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  color: black;
+}
+
+.reportMenu {
+
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-top: 0.3rem;
+  z-index: 10;
+  min-width: 180px;
+}
+
+
+.reportMenuItem {
+  background: none;
+  border: none;
+  color: #c00;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
 
 

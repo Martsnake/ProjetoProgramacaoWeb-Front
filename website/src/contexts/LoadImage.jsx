@@ -11,7 +11,7 @@ function LoadEventImage(event) {
     const filePath = `${imagesFolder}/event_${event.id}.png`
     if(!existsSync(filePath)) {
         file = createWriteStream(imagesFolder);
-    let request = get(url, function (response) {
+    let request = get(`http://localhost:8000/events/${event.id}.png/image`, function (response) {
             response.pipe(file);
         });
 

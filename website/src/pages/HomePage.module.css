@@ -41,6 +41,11 @@
   gap: 1.5rem;
   margin-top: 1rem;
 }
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
 
 @media (max-width: 900px) {
   .mainContainer {

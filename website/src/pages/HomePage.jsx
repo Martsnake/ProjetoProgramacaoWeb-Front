@@ -65,6 +65,7 @@ export default function MainPage() {
                                 key={ev.EventId}
                                 to={`/event/${ev.EventId}`}
                                 state={{ ...ev }}
+                                className={styles.cardLink}
                             >
                                 <EventCard
                                 key={ev.EventId}

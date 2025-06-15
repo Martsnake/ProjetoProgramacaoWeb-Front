@@ -79,3 +79,20 @@
   margin-top: 1rem;
   padding: 0;   
 }
+
+.centerText {
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.forgot_password {
+  text-align: center;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 14px;
+  color: #0D28C2;
+  cursor: pointer;
+}

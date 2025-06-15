@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import CommentCard from "../components/CommentCard.jsx";
 import StarRating from "../components/StarRating.jsx";
 import GoBackButton from "../components/GoBackButton.jsx";
+import BackToTopButton from "../components/BackToTopButton.jsx";
+
 
 import styles from "./EventDetailPage.module.css";
 import isctImg from  "../assets/iscteImag.svg"
@@ -187,6 +189,7 @@ export default function EventDetailPage() {
           
         </div>
       </div>
+      <BackToTopButton />
     </div>
   );
 }

@@ -77,8 +77,12 @@ const Register = () => {
                             <button type="submit"className={styles.register_button}>Register</button>
                         </div>
                     </div>
-
                     </form>
+                    
+                    <div className={styles.centerText}>
+                        Já tens conta? <Link to="/login" className={styles.forgot_password}>Fazer login</Link>
+                    </div>
+                    
                 </div>
             </div>
     );
